@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A searchable map and directory of fictional university friends around the world.">
+  <meta name="theme-color" content="#173f36">
+  <title>Common Ground — University Friends Map</title>
+  <link rel="preconnect" href="https://unpkg.com">
+  <link rel="preconnect" href="https://tile.openstreetmap.org">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css">
+  <link rel="stylesheet" href="assets/styles.css">
+  <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script defer src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+  <script defer src="assets/app.js"></script>
+</head>
+<body>
+  <header class="masthead">
+    <a class="brand" href="#" aria-label="Common Ground home">
+      <span class="brand-mark" aria-hidden="true">CG</span>
+      <span><strong>Common Ground</strong><small>University friends, wherever life took us</small></span>
+    </a>
+    <span class="privacy-note"><span aria-hidden="true">●</span> City-level locations only</span>
+  </header>
+
+  <main>
+    <section class="intro" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow">OUR GLOBAL COMMUNITY</p>
+        <h1 id="page-title">Old friends. New places.</h1>
+        <p>Explore where our university community is today — and rediscover the people behind the pins.</p>
+      </div>
+      <dl class="stats" aria-label="Directory summary">
+        <div><dt id="friend-count">—</dt><dd>Friends</dd></div>
+        <div><dt id="city-count">—</dt><dd>Cities</dd></div>
+        <div><dt id="country-count">—</dt><dd>Countries</dd></div>
+      </dl>
+    </section>
+
+    <section class="controls" aria-label="Search and filters">
+      <label class="search-field">
+        <span class="sr-only">Search friends</span>
+        <span aria-hidden="true">⌕</span>
+        <input id="search" type="search" placeholder="Search name, specialty, organisation or city…" autocomplete="off">
+      </label>
+      <label>
+        <span class="sr-only">Filter by specialty</span>
+        <select id="specialty-filter"><option value="">All specialties</option></select>
+      </label>
+      <label>
+        <span class="sr-only">Filter by country</span>
+        <select id="country-filter"><option value="">All countries</option></select>
+      </label>
+      <button id="clear-filters" class="text-button" type="button" hidden>Clear filters</button>
+    </section>
+
+    <div id="error-message" class="notice" role="alert" hidden></div>
+
+    <section class="explorer" aria-label="Friends explorer">
+      <div class="map-panel">
+        <div id="map" aria-label="Map showing friend locations"></div>
+        <p class="map-caption">Approximate workplace city locations · Map data © OpenStreetMap contributors</p>
+      </div>
+      <div class="directory-panel">
+        <div class="directory-heading">
+          <div><p class="eyebrow">DIRECTORY</p><h2>People near and far</h2></div>
+          <span id="result-count" aria-live="polite"></span>
+        </div>
+        <div id="friend-list" class="friend-list"></div>
+        <div id="empty-state" class="empty-state" hidden>
+          <span aria-hidden="true">⌕</span>
+          <h3>No friends found</h3>
+          <p>Try a different name, place, or specialty.</p>
+          <button id="empty-clear" type="button">Clear all filters</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><p>Made for staying connected <span aria-hidden="true">♥</span></p><p>All people and details in this prototype are fictional.</p></footer>
+</body>
+</html>
