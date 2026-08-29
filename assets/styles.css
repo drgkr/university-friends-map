@@ -84,11 +84,12 @@ footer span { color: var(--accent); }
 .custom-marker span { transform: rotate(45deg); }
 .friend-cluster { display: grid; place-items: center; border: 5px solid rgba(255,255,255,.88); border-radius: 50%; color: white; background: var(--green); box-shadow: 0 5px 18px rgba(16,72,61,.32); font-size: 13px; font-weight: 850; }
 .friend-cluster::after { content: ''; position: absolute; inset: -7px; border: 2px solid rgba(23,107,88,.28); border-radius: 50%; }
-.leaflet-control-layers, .leaflet-bar { border: 0 !important; box-shadow: 0 4px 15px rgba(24,52,45,.18) !important; }
-.leaflet-control-layers { border-radius: 9px !important; color: var(--ink); font: 11px/1.4 Inter, sans-serif; }
-.leaflet-control-zoom a { color: var(--green-dark) !important; }
-.leaflet-popup-content-wrapper { border-radius: 14px; box-shadow: 0 12px 36px rgba(24,52,45,.22); }
-.leaflet-popup-content { margin: 16px 18px; }
+.maplibregl-ctrl-group { border: 0 !important; border-radius: 10px !important; box-shadow: 0 4px 15px rgba(24,52,45,.18) !important; overflow: hidden; }
+.maplibregl-ctrl-group button { width: 34px; height: 34px; }
+.maplibregl-ctrl-attrib { border-radius: 7px !important; color: var(--muted); font-size: 10px; }
+.maplibregl-popup-content { padding: 16px 18px; border-radius: 14px; box-shadow: 0 12px 36px rgba(24,52,45,.22); }
+.maplibregl-popup-close-button { width: 28px; height: 28px; color: var(--muted); font-size: 20px; }
+.maplibregl-canvas { outline: none; }
 .popup { min-width: 210px; }
 .popup-top { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
 .popup .avatar { width: 42px; height: 42px; }
