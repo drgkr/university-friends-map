@@ -2,7 +2,7 @@
 
 A polished, responsive, searchable friends map built as a simple static website. It uses Leaflet, OpenStreetMap tiles, and marker clustering. No build step, database, API key, or paid map account is required.
 
-> All people, organisations, and professional details included in this prototype are fictional. Locations are approximate city centres, never home addresses.
+> Locations are approximate city centres, never home addresses. Obtain consent before publishing or changing personal and professional information.
 
 ## Preview locally
 
