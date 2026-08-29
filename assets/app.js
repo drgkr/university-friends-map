@@ -1,11 +1,12 @@
-const state = { friends: [], markers: new Map(), map: null, cluster: null };
+const state = { friends: [], markers: new Map(), map: null, cluster: null, homeBounds: null };
 
 const elements = {
   search: document.querySelector('#search'), specialty: document.querySelector('#specialty-filter'),
   country: document.querySelector('#country-filter'), clear: document.querySelector('#clear-filters'),
   emptyClear: document.querySelector('#empty-clear'), list: document.querySelector('#friend-list'),
   empty: document.querySelector('#empty-state'), results: document.querySelector('#result-count'),
-  error: document.querySelector('#error-message')
+  error: document.querySelector('#error-message'), fitMap: document.querySelector('#fit-map'),
+  resetMap: document.querySelector('#reset-map')
 };
 
 const escapeHtml = value => String(value ?? '').replace(/[&<>'"]/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[char]));
@@ -15,16 +16,33 @@ const avatar = friend => friend.photo
   : `<span class="avatar" aria-hidden="true">${initials(friend.name)}</span>`;
 
 function initialiseMap() {
-  state.map = L.map('map', { scrollWheelZoom: false }).setView([28, 5], 2);
-  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  state.map = L.map('map', { scrollWheelZoom: false, zoomControl: false, worldCopyJump: true, minZoom: 2 });
+  const streets = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
   }).addTo(state.map);
-  state.cluster = L.markerClusterGroup({ showCoverageOnHover: false, maxClusterRadius: 46 });
+  const humanitarian = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+    maxZoom: 19, attribution: '&copy; OpenStreetMap contributors · Tiles by HOT'
+  });
+  L.control.zoom({ position: 'bottomright' }).addTo(state.map);
+  L.control.layers({ 'Classic streets': streets, 'Clear contrast': humanitarian }, null, { position: 'topright' }).addTo(state.map);
+  state.cluster = L.markerClusterGroup({
+    showCoverageOnHover: false, maxClusterRadius: 50, spiderfyOnMaxZoom: true,
+    spiderfyDistanceMultiplier: 1.7, animateAddingMarkers: true,
+    iconCreateFunction: cluster => L.divIcon({
+      html: `<span>${cluster.getChildCount()}</span>`, className: 'friend-cluster', iconSize: [46, 46]
+    })
+  });
   state.map.addLayer(state.cluster);
 }
 
+function specialtyTone(specialty) {
+  if (/surgery|orthopaedics|gynaecology|ent/i.test(specialty)) return 'surgery';
+  if (/general practice|hospital medicine/i.test(specialty)) return 'primary';
+  return 'medicine';
+}
+
 function markerIcon(friend) {
-  return L.divIcon({ className: 'custom-marker', html: `<span>${initials(friend.name)}</span>`, iconSize: [34, 34] });
+  return L.divIcon({ className: `custom-marker ${specialtyTone(friend.specialty)}`, html: `<span>${initials(friend.name)}</span>`, iconSize: [38, 44], iconAnchor: [19, 40], popupAnchor: [0, -38] });
 }
 
 function popup(friend) {
@@ -64,7 +82,16 @@ function render() {
   elements.clear.hidden = !elements.search.value && !elements.specialty.value && !elements.country.value;
   state.cluster.clearLayers();
   filtered.forEach(friend => state.cluster.addLayer(state.markers.get(friend.id)));
-  if (filtered.length && filtered.length !== state.friends.length) state.map.fitBounds(state.cluster.getBounds(), { padding: [38, 38], maxZoom: 7 });
+  if (filtered.length && filtered.length !== state.friends.length) fitVisible();
+}
+
+function fitVisible() {
+  if (!state.cluster || !state.cluster.getLayers().length) return;
+  state.map.fitBounds(state.cluster.getBounds(), { padding: [46, 46], maxZoom: 8, animate: true });
+}
+
+function resetMap() {
+  if (state.homeBounds) state.map.fitBounds(state.homeBounds, { padding: [42, 42], maxZoom: 4, animate: true });
 }
 
 function showFriend(id) {
@@ -88,6 +115,8 @@ async function start() {
     document.querySelector('#city-count').textContent = new Set(state.friends.map(friend => `${friend.city}|${friend.country}`)).size;
     document.querySelector('#country-count').textContent = new Set(state.friends.map(friend => friend.country)).size;
     render();
+    state.homeBounds = state.cluster.getBounds();
+    resetMap();
   } catch {
     elements.error.hidden = false;
     elements.error.textContent = 'The friends directory could not be loaded. If you opened the HTML file directly, run it through a local web server or GitHub Pages.';
@@ -100,4 +129,6 @@ elements.country.addEventListener('change', render);
 elements.clear.addEventListener('click', clearFilters);
 elements.emptyClear.addEventListener('click', clearFilters);
 elements.list.addEventListener('click', event => { const card = event.target.closest('[data-id]'); if (card) showFriend(card.dataset.id); });
+elements.fitMap.addEventListener('click', fitVisible);
+elements.resetMap.addEventListener('click', resetMap);
 window.addEventListener('DOMContentLoaded', start);
