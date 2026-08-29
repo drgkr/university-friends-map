@@ -7,14 +7,11 @@
   <meta name="theme-color" content="#173f36">
   <title>Exoticans — Madras Medical College</title>
   <link rel="preconnect" href="https://unpkg.com">
-  <link rel="preconnect" href="https://tile.openstreetmap.org">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css">
-  <link rel="stylesheet" href="assets/styles.css?v=3">
-  <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
-  <script defer src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
-  <script defer src="assets/app.js?v=3"></script>
+  <link rel="preconnect" href="https://tiles.openfreemap.org">
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.css">
+  <link rel="stylesheet" href="assets/styles.css?v=4">
+  <script defer src="https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.js"></script>
+  <script defer src="assets/app.js?v=4"></script>
 </head>
 <body>
   <header class="masthead">
@@ -70,7 +67,7 @@
           <span><i class="legend-dot surgery"></i> Surgery</span>
           <span><i class="legend-dot primary"></i> Primary care</span>
         </div>
-        <p class="map-caption">Approximate city locations · Choose a map style from the layers control</p>
+        <p class="map-caption">Approximate city locations · Vector map by OpenFreeMap and OpenStreetMap</p>
       </div>
       <div class="directory-panel">
         <div class="directory-heading">
