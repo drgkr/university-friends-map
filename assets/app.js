@@ -79,7 +79,7 @@ function clearFilters() { elements.search.value = ''; elements.specialty.value =
 
 async function start() {
   try {
-    const response = await fetch('data/friends.json'); if (!response.ok) throw new Error();
+    const response = await fetch('data/friends.json?v=2'); if (!response.ok) throw new Error();
     state.friends = await response.json();
     initialiseMap(); makeMarkers();
     fillSelect(elements.specialty, state.friends.map(friend => friend.specialty));
