@@ -28,7 +28,7 @@ function markerIcon(friend) {
 }
 
 function popup(friend) {
-  return `<article class="popup"><div class="popup-top">${avatar(friend)}<div><h3>${escapeHtml(friend.name)}</h3><p class="friend-role">${escapeHtml(friend.specialty)}</p></div></div><p><strong>${escapeHtml(friend.jobTitle)}</strong></p><p>${escapeHtml(friend.organisation)}</p><p>⌖ ${escapeHtml(friend.city)}, ${escapeHtml(friend.country)}</p>${friend.universityYear ? `<p>University class of ${escapeHtml(friend.universityYear)}</p>` : ''}</article>`;
+  return `<article class="popup"><div class="popup-top">${avatar(friend)}<div><h3>${escapeHtml(friend.name)}</h3><p class="friend-role">${escapeHtml(friend.specialty)}</p></div></div>${friend.jobTitle ? `<p><strong>${escapeHtml(friend.jobTitle)}</strong></p>` : ''}${friend.organisation ? `<p>${escapeHtml(friend.organisation)}</p>` : ''}<p>⌖ ${escapeHtml(friend.city)}, ${escapeHtml(friend.country)}</p>${friend.note ? `<p>${escapeHtml(friend.note)}</p>` : ''}</article>`;
 }
 
 function makeMarkers() {
@@ -52,7 +52,7 @@ function matches(friend) {
 }
 
 function friendCard(friend) {
-  return `<button class="friend-card" type="button" data-id="${escapeHtml(friend.id)}" aria-label="Show ${escapeHtml(friend.name)} on map">${avatar(friend)}<span class="friend-info"><h3>${escapeHtml(friend.name)}</h3><p class="friend-role">${escapeHtml(friend.specialty)} · ${escapeHtml(friend.jobTitle)}</p><p class="friend-place">⌖ ${escapeHtml(friend.organisation)}, ${escapeHtml(friend.city)}</p></span><span class="card-arrow" aria-hidden="true">›</span></button>`;
+  return `<button class="friend-card" type="button" data-id="${escapeHtml(friend.id)}" aria-label="Show ${escapeHtml(friend.name)} on map">${avatar(friend)}<span class="friend-info"><h3>${escapeHtml(friend.name)}</h3><p class="friend-role">${escapeHtml(friend.specialty)}</p><p class="friend-place">⌖ ${escapeHtml(friend.city)}, ${escapeHtml(friend.country)}</p></span><span class="card-arrow" aria-hidden="true">›</span></button>`;
 }
 
 function render() {
