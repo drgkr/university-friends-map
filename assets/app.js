@@ -185,7 +185,7 @@ function clearFilters() { elements.search.value = ''; elements.specialty.value =
 
 async function start() {
   try {
-    const response = await fetch('data/friends.json?v=2'); if (!response.ok) throw new Error();
+    const response = await fetch('data/friends.json?v=3'); if (!response.ok) throw new Error();
     state.friends = await response.json(); state.filtered = state.friends;
     fillSelect(elements.specialty, state.friends.map(friend => friend.specialty));
     fillSelect(elements.country, state.friends.map(friend => friend.country));
