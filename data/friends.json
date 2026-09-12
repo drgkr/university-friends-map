@@ -40,5 +40,16 @@
   {"id":"senthil-kumar","name":"Senthil Kumar","specialty":"General Practice","city":"Little Rock","country":"United States","latitude":34.7465,"longitude":-92.2896,"photo":""},
   {"id":"dinesh-kumar","name":"Dinesh Kumar","specialty":"Hepatology","city":"Chennai","country":"India","latitude":13.0827,"longitude":80.2707,"photo":""},
   {"id":"jeyanirmala","name":"Jeyanirmala","specialty":"Gynaecology","city":"Chennai","country":"India","latitude":13.0827,"longitude":80.2707,"photo":""},
-  {"id":"ramya","name":"Ramya","specialty":"Internal Medicine","city":"Vellore","country":"India","latitude":12.9165,"longitude":79.1325,"photo":""}
+  {"id":"ramya","name":"Ramya","specialty":"Internal Medicine","city":"Vellore","country":"India","latitude":12.9165,"longitude":79.1325,"photo":""},
+  {"id":"gayathri","name":"Gayathri","specialty":"Cardiology","city":"New York","country":"United States","latitude":40.7128,"longitude":-74.0060,"photo":""},
+  {"id":"kalapana","name":"Kalapana","specialty":"Endocrinology","city":"Ohio","country":"United States","latitude":39.9612,"longitude":-82.9988,"note":"Approximate marker at Columbus, Ohio","photo":""},
+  {"id":"nagapradeep","name":"Nagapradeep","specialty":"Cardiology","city":"Ohio","country":"United States","latitude":39.9612,"longitude":-82.9988,"note":"Approximate marker at Columbus, Ohio","photo":""},
+  {"id":"ganesh-g","name":"Ganesh G","specialty":"Hepatobiliary Surgery","city":"New York","country":"United States","latitude":40.7128,"longitude":-74.0060,"photo":""},
+  {"id":"ganesh-kumar","name":"Ganesh Kumar","specialty":"Anaesthesia & Intensive Care Medicine","city":"Cambridge","country":"United Kingdom","latitude":52.2053,"longitude":0.1218,"photo":""},
+  {"id":"arun-chakravarthy","name":"Arun Chakravarthy","specialty":"Anaesthesia","city":"Telford","country":"United Kingdom","latitude":52.6766,"longitude":-2.4493,"photo":""},
+  {"id":"arun-d","name":"Arun D","specialty":"Cardiology","city":"Truro","country":"United Kingdom","latitude":50.2632,"longitude":-5.0510,"photo":""},
+  {"id":"senthil-kumar-melbourne","name":"Senthil Kumar","specialty":"Orthopaedics","city":"Melbourne","country":"Australia","latitude":-37.8136,"longitude":144.9631,"photo":""},
+  {"id":"jellsingh","name":"Jellsingh","specialty":"Not specified","city":"Adelaide","country":"Australia","latitude":-34.9285,"longitude":138.6007,"photo":""},
+  {"id":"pankajam","name":"Pankajam","specialty":"Not specified","city":"Adelaide","country":"Australia","latitude":-34.9285,"longitude":138.6007,"photo":""},
+  {"id":"suganya","name":"Suganya","specialty":"Not specified","city":"Adelaide","country":"Australia","latitude":-34.9285,"longitude":138.6007,"photo":""}
 ]
